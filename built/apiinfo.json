@@ -1,0 +1,50 @@
+{
+ "byQName": {
+  "weather": {
+   "kind": 5,
+   "namespace": "",
+   "name": "weather",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "color": "190",
+    "weight": 100,
+    "icon": "",
+    "block": "poop Blocks",
+    "paramHelp": {},
+    "jsDoc": ""
+   },
+   "pkg": null,
+   "retType": "",
+   "parameters": null,
+   "qName": "weather"
+  },
+  "weather.test": {
+   "kind": 3,
+   "namespace": "weather",
+   "name": "test",
+   "attributes": {
+    "paramDefl": {
+     "interval": "150"
+    },
+    "callingConvention": 0,
+    "_source": null,
+    "weight": 30,
+    "blockId": "weather-test",
+    "block": "test",
+    "shim": "weather::test",
+    "paramHelp": {
+     "interval": "speed of scroll; eg: 150, 100, 200, -100"
+    },
+    "jsDoc": "Scroll a number on the screen. If the number fits on the screen (i.e. is a single digit), do not scroll.",
+    "_name": "test"
+   },
+   "pkg": null,
+   "retType": "void",
+   "parameters": [],
+   "snippet": "test()",
+   "qName": "weather.test"
+  }
+ }
+}
