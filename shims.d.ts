@@ -2,15 +2,24 @@
 
 
 
-    //% color=190 weight=100 icon="\uf1ec" block="poop Blocks"
+    //% color=190 weight=100 icon="\uf1ec" block="IoT Blocks"
 declare namespace weather {
 
     /**
-     * Scroll a number on the screen. If the number fits on the screen (i.e. is a single digit), do not scroll.
-     * @param interval speed of scroll; eg: 150, 100, 200, -100
+     * do some stuff
      */
-    //% weight=30 blockId=weather-test block="test" shim=weather::test
-    function test(): void;
+    //% help=none
+    //% weight=96
+    //% blockId=set_room_temp block="set|room %room|temperature to %temperature" blockGap=8 shim=weather::setRoomTemperature
+    function setRoomTemperature(room: string, temperature: number): void;
+
+    /**
+     * do some stuff
+     */
+    //% help=none
+    //% weight=96
+    //% blockId=get_place_temp block="get|temperature for %location" blockGap=8 shim=weather::getTemperature
+    function getTemperature(location: string): string;
 }
 
 // Auto-generated. Do not edit. Really.

@@ -11,7 +11,7 @@
     "color": "190",
     "weight": 100,
     "icon": "",
-    "block": "poop Blocks",
+    "block": "IoT Blocks",
     "paramHelp": {},
     "jsDoc": ""
    },
@@ -20,31 +20,76 @@
    "parameters": null,
    "qName": "weather"
   },
-  "weather.test": {
+  "weather.setRoomTemperature": {
    "kind": 3,
    "namespace": "weather",
-   "name": "test",
+   "name": "setRoomTemperature",
    "attributes": {
-    "paramDefl": {
-     "interval": "150"
-    },
+    "paramDefl": {},
     "callingConvention": 0,
     "_source": null,
-    "weight": 30,
-    "blockId": "weather-test",
-    "block": "test",
-    "shim": "weather::test",
-    "paramHelp": {
-     "interval": "speed of scroll; eg: 150, 100, 200, -100"
-    },
-    "jsDoc": "Scroll a number on the screen. If the number fits on the screen (i.e. is a single digit), do not scroll.",
-    "_name": "test"
+    "help": "none",
+    "weight": 96,
+    "blockId": "set_room_temp",
+    "block": "set|room %room|temperature to %temperature",
+    "blockGap": "8",
+    "shim": "weather::setRoomTemperature",
+    "paramHelp": {},
+    "jsDoc": "do some stuff",
+    "_name": "setRoomTemperature"
    },
    "pkg": null,
    "retType": "void",
-   "parameters": [],
-   "snippet": "test()",
-   "qName": "weather.test"
+   "parameters": [
+    {
+     "name": "room",
+     "description": "",
+     "type": "string",
+     "options": {},
+     "isEnum": false
+    },
+    {
+     "name": "temperature",
+     "description": "",
+     "type": "number",
+     "options": {},
+     "isEnum": false
+    }
+   ],
+   "snippet": "setRoomTemperature(\"\", 0)",
+   "qName": "weather.setRoomTemperature"
+  },
+  "weather.getTemperature": {
+   "kind": 3,
+   "namespace": "weather",
+   "name": "getTemperature",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "help": "none",
+    "weight": 96,
+    "blockId": "get_place_temp",
+    "block": "get|temperature for %location",
+    "blockGap": "8",
+    "shim": "weather::getTemperature",
+    "paramHelp": {},
+    "jsDoc": "do some stuff",
+    "_name": "getTemperature"
+   },
+   "pkg": null,
+   "retType": "string",
+   "parameters": [
+    {
+     "name": "location",
+     "description": "",
+     "type": "string",
+     "options": {},
+     "isEnum": false
+    }
+   ],
+   "snippet": "getTemperature(\"\")",
+   "qName": "weather.getTemperature"
   }
  }
 }

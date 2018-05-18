@@ -16,15 +16,15 @@
         "README.md"
     ],
     "public": true,
-    "yotta":{
-        "dependencies":{
-            "microbit":"lancaster-university/microbit#rest-radio",
-            "samsung-radio":"lancaster-university/rest-radio#master"
+    "yotta": {
+        "dependencies": {
+            "microbit": "lancaster-university/microbit#rest-radio",
+            "samsung-radio": "lancaster-university/rest-radio#master"
         },
-        "config":{
-            "microbit-dal":{
-                "radio":{
-                    "version":"MICROBIT_RADIO_MODIFIED"
+        "config": {
+            "microbit-dal": {
+                "radio": {
+                    "version": "MICROBIT_RADIO_MODIFIED"
                 }
             }
         }
