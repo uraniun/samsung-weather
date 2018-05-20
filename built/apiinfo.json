@@ -8,12 +8,12 @@
     "paramDefl": {},
     "callingConvention": 0,
     "_source": null,
-    "color": "190",
+    "color": "243",
     "weight": 100,
     "icon": "",
     "block": "IoT Blocks",
     "paramHelp": {},
-    "jsDoc": ""
+    "jsDoc": "share\nuse"
    },
    "pkg": null,
    "retType": "",
@@ -31,7 +31,7 @@
     "help": "none",
     "weight": 96,
     "blockId": "set_room_temp",
-    "block": "set|room %room|temperature to %temperature",
+    "block": "send|temperature %temperature|of room %room to remote",
     "blockGap": "8",
     "shim": "weather::setRoomTemperature",
     "paramHelp": {},
@@ -42,22 +42,69 @@
    "retType": "void",
    "parameters": [
     {
+     "name": "temperature",
+     "description": "",
+     "type": "number",
+     "options": {},
+     "isEnum": false
+    },
+    {
      "name": "room",
+     "description": "",
+     "type": "string",
+     "options": {},
+     "isEnum": false
+    }
+   ],
+   "snippet": "setRoomTemperature(0, \"\")",
+   "qName": "weather.setRoomTemperature"
+  },
+  "weather.share": {
+   "kind": 3,
+   "namespace": "weather",
+   "name": "share",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "help": "none",
+    "weight": 96,
+    "blockId": "share",
+    "block": "share|%variable|with %PERMISSIONS",
+    "blockGap": "8",
+    "paramFieldEditor": {
+     "PERMISSIONS": "gridpicker"
+    },
+    "paramFieldEditorOptions": {
+     "PERMISSIONS": {
+      "columns": "4"
+     }
+    },
+    "shim": "weather::share",
+    "paramHelp": {},
+    "jsDoc": "do some stuff",
+    "_name": "share"
+   },
+   "pkg": null,
+   "retType": "void",
+   "parameters": [
+    {
+     "name": "variable",
      "description": "",
      "type": "string",
      "options": {},
      "isEnum": false
     },
     {
-     "name": "temperature",
+     "name": "l",
      "description": "",
-     "type": "number",
+     "type": "Locations",
      "options": {},
-     "isEnum": false
+     "isEnum": true
     }
    ],
-   "snippet": "setRoomTemperature(\"\", 0)",
-   "qName": "weather.setRoomTemperature"
+   "snippet": "share(\"\", null)",
+   "qName": "weather.share"
   },
   "weather.getTemperature": {
    "kind": 3,
@@ -90,6 +137,444 @@
    ],
    "snippet": "getTemperature(\"\")",
    "qName": "weather.getTemperature"
+  },
+  "weather.getEnergyUsage": {
+   "kind": 3,
+   "namespace": "weather",
+   "name": "getEnergyUsage",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "help": "none",
+    "weight": 96,
+    "blockId": "get_energy",
+    "block": "get|energy usage of building %building",
+    "blockGap": "8",
+    "shim": "weather::getEnergyUsage",
+    "paramHelp": {},
+    "jsDoc": "do some stuff",
+    "_name": "getEnergyUsage"
+   },
+   "pkg": null,
+   "retType": "string",
+   "parameters": [
+    {
+     "name": "building",
+     "description": "",
+     "type": "string",
+     "options": {},
+     "isEnum": false
+    }
+   ],
+   "snippet": "getEnergyUsage(\"\")",
+   "qName": "weather.getEnergyUsage"
+  },
+  "weather.onEnergy": {
+   "kind": 3,
+   "namespace": "weather",
+   "name": "onEnergy",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "help": "none",
+    "weight": 96,
+    "blockId": "on_energy_event",
+    "block": "on energy usage of building %building|%LEVEL|%threshold",
+    "blockGap": "8",
+    "paramFieldEditor": {
+     "LEVEL": "gridpicker"
+    },
+    "paramFieldEditorOptions": {
+     "LEVEL": {
+      "columns": "4"
+     }
+    },
+    "shim": "weather::onEnergy",
+    "paramHelp": {},
+    "jsDoc": "do some stuff",
+    "_name": "onEnergy"
+   },
+   "pkg": null,
+   "retType": "void",
+   "parameters": [
+    {
+     "name": "building",
+     "description": "",
+     "type": "string",
+     "options": {},
+     "isEnum": false
+    },
+    {
+     "name": "level",
+     "description": "",
+     "type": "EnergyLevel",
+     "options": {},
+     "isEnum": true
+    },
+    {
+     "name": "threshold",
+     "description": "",
+     "type": "number",
+     "options": {},
+     "isEnum": false
+    },
+    {
+     "name": "body",
+     "description": "",
+     "type": "() => void",
+     "options": {},
+     "isEnum": false
+    }
+   ],
+   "snippet": "onEnergy(\"\", null, 0, () => {})",
+   "qName": "weather.onEnergy"
+  },
+  "weather.onCarbon": {
+   "kind": 3,
+   "namespace": "weather",
+   "name": "onCarbon",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "help": "none",
+    "weight": 96,
+    "blockId": "on_carbon_event",
+    "block": "on|carbon level %LEVEL",
+    "blockGap": "8",
+    "paramFieldEditor": {
+     "LEVEL": "gridpicker"
+    },
+    "paramFieldEditorOptions": {
+     "LEVEL": {
+      "columns": "4"
+     }
+    },
+    "shim": "weather::onCarbon",
+    "paramHelp": {},
+    "jsDoc": "do some stuff",
+    "_name": "onCarbon"
+   },
+   "pkg": null,
+   "retType": "void",
+   "parameters": [
+    {
+     "name": "level",
+     "description": "",
+     "type": "CarbonLevel",
+     "options": {},
+     "isEnum": true
+    },
+    {
+     "name": "body",
+     "description": "",
+     "type": "() => void",
+     "options": {},
+     "isEnum": false
+    }
+   ],
+   "snippet": "onCarbon(null, () => {})",
+   "qName": "weather.onCarbon"
+  },
+  "weather.onAny": {
+   "kind": 3,
+   "namespace": "weather",
+   "name": "onAny",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "help": "none",
+    "weight": 96,
+    "blockId": "on_any",
+    "block": "on %key|in room %room| changed",
+    "blockGap": "8",
+    "shim": "weather::onAny",
+    "paramHelp": {},
+    "jsDoc": "do some stuff",
+    "_name": "onAny"
+   },
+   "pkg": null,
+   "retType": "void",
+   "parameters": [
+    {
+     "name": "key",
+     "description": "",
+     "type": "string",
+     "options": {},
+     "isEnum": false
+    },
+    {
+     "name": "room",
+     "description": "",
+     "type": "string",
+     "options": {},
+     "isEnum": false
+    },
+    {
+     "name": "body",
+     "description": "",
+     "type": "() => void",
+     "options": {},
+     "isEnum": false
+    }
+   ],
+   "snippet": "onAny(\"\", \"\", () => {})",
+   "qName": "weather.onAny"
+  },
+  "weather.getReceivedString": {
+   "kind": 3,
+   "namespace": "weather",
+   "name": "getReceivedString",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "help": "none",
+    "weight": 96,
+    "blockId": "get_received_string",
+    "block": "received string",
+    "blockGap": "8",
+    "shim": "weather::getReceivedString",
+    "paramHelp": {},
+    "jsDoc": "do some stuff",
+    "_name": "getReceivedString"
+   },
+   "pkg": null,
+   "retType": "string",
+   "parameters": [],
+   "snippet": "getReceivedString()",
+   "qName": "weather.getReceivedString"
+  },
+  "weather.getReceivedNumber": {
+   "kind": 3,
+   "namespace": "weather",
+   "name": "getReceivedNumber",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "help": "none",
+    "weight": 96,
+    "blockId": "get_received_number",
+    "block": "received number",
+    "blockGap": "8",
+    "shim": "weather::getReceivedNumber",
+    "paramHelp": {},
+    "jsDoc": "do some stuff",
+    "_name": "getReceivedNumber"
+   },
+   "pkg": null,
+   "retType": "number",
+   "parameters": [],
+   "snippet": "getReceivedNumber()",
+   "qName": "weather.getReceivedNumber"
+  },
+  "EnergyLevel": {
+   "kind": 6,
+   "namespace": "",
+   "name": "EnergyLevel",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "EnergyLevel"
+   },
+   "pkg": null,
+   "retType": "EnergyLevel",
+   "parameters": null,
+   "qName": "EnergyLevel"
+  },
+  "EnergyLevel.under": {
+   "kind": 7,
+   "namespace": "EnergyLevel",
+   "name": "under",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "under"
+   },
+   "pkg": null,
+   "retType": "EnergyLevel",
+   "parameters": null,
+   "qName": "EnergyLevel.under"
+  },
+  "EnergyLevel.over": {
+   "kind": 7,
+   "namespace": "EnergyLevel",
+   "name": "over",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "over"
+   },
+   "pkg": null,
+   "retType": "EnergyLevel",
+   "parameters": null,
+   "qName": "EnergyLevel.over"
+  },
+  "CarbonLevel": {
+   "kind": 6,
+   "namespace": "",
+   "name": "CarbonLevel",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "CarbonLevel"
+   },
+   "pkg": null,
+   "retType": "CarbonLevel",
+   "parameters": null,
+   "qName": "CarbonLevel"
+  },
+  "CarbonLevel.high": {
+   "kind": 7,
+   "namespace": "CarbonLevel",
+   "name": "high",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "high"
+   },
+   "pkg": null,
+   "retType": "CarbonLevel",
+   "parameters": null,
+   "qName": "CarbonLevel.high"
+  },
+  "CarbonLevel.low": {
+   "kind": 7,
+   "namespace": "CarbonLevel",
+   "name": "low",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "low"
+   },
+   "pkg": null,
+   "retType": "CarbonLevel",
+   "parameters": null,
+   "qName": "CarbonLevel.low"
+  },
+  "Locations": {
+   "kind": 6,
+   "namespace": "",
+   "name": "Locations",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "Locations"
+   },
+   "pkg": null,
+   "retType": "Locations",
+   "parameters": null,
+   "qName": "Locations"
+  },
+  "Locations.school": {
+   "kind": 7,
+   "namespace": "Locations",
+   "name": "school",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "school"
+   },
+   "pkg": null,
+   "retType": "Locations",
+   "parameters": null,
+   "qName": "Locations.school"
+  },
+  "Locations.home": {
+   "kind": 7,
+   "namespace": "Locations",
+   "name": "home",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "home"
+   },
+   "pkg": null,
+   "retType": "Locations",
+   "parameters": null,
+   "qName": "Locations.home"
+  },
+  "Locations.classroom": {
+   "kind": 7,
+   "namespace": "Locations",
+   "name": "classroom",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "classroom"
+   },
+   "pkg": null,
+   "retType": "Locations",
+   "parameters": null,
+   "qName": "Locations.classroom"
+  },
+  "Locations.microbitfoundation": {
+   "kind": 7,
+   "namespace": "Locations",
+   "name": "microbitfoundation",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "microbitfoundation"
+   },
+   "pkg": null,
+   "retType": "Locations",
+   "parameters": null,
+   "qName": "Locations.microbitfoundation"
+  },
+  "Locations.everyone": {
+   "kind": 7,
+   "namespace": "Locations",
+   "name": "everyone",
+   "attributes": {
+    "paramDefl": {},
+    "callingConvention": 0,
+    "_source": null,
+    "paramHelp": {},
+    "jsDoc": "",
+    "_name": "everyone"
+   },
+   "pkg": null,
+   "retType": "Locations",
+   "parameters": null,
+   "qName": "Locations.everyone"
   }
  }
 }
