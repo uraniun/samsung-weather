@@ -36,29 +36,22 @@ enum class Locations{
  * use
  */
 
-//% color=243 weight=100 icon="\uf1ec" block="IoT Blocks"
+//% color=243 weight=100 icon="\uf185" block="Weather"
 namespace weather {
-    /**
-      * do some stuff
-      */
-    //% help=none
-    //% weight=96
-    //% blockId=set_room_temp block="send|temperature %temperature|of room %room to remote" blockGap=8
-    void setRoomTemperature(int temperature, StringData* room)
-    {
-        weatherService.setRoomTemperature(ManagedString(room), temperature);
-    }
 
-    /**
-      * do some stuff
-      */
-    //% help=none
-    //% weight=96
-    //% blockId=share block="share|%variable|with %PERMISSIONS" blockGap=8
-    //% PERMISSIONS.fieldEditor="gridpicker" PERMISSIONS.fieldOptions.columns=4
-    void share(StringData* variable, Locations l)
-    {
-        // w.setRoomTemperature(ManagedString(room),temperature)
+    bool radioEnabled = false;
+
+    int init() {
+        int r = uBit.radio.enable();
+        if (r != MICROBIT_OK) {
+            uBit.panic(43);
+            return r;
+        }
+        if (!radioEnabled) {
+            uBit.radio.setGroup(0);
+            radioEnabled = true;
+        }
+        return r;
     }
 
     /**
@@ -69,6 +62,7 @@ namespace weather {
     //% blockId=get_place_temp block="get|temperature for %location" blockGap=8
     StringData* getTemperature(StringData* location)
     {
+        init();
         ManagedString s = weatherService.getTemperature(ManagedString(location));
         return s.leakData();
     }
@@ -78,10 +72,12 @@ namespace weather {
       */
     //% help=none
     //% weight=96
-    //% blockId=get_energy block="get|energy usage of building %building" blockGap=8
-    StringData* getEnergyUsage(StringData* building)
+    //% blockId=get_wind_dir block="get|wind direction for %location" blockGap=8
+    StringData* getWindDirection(StringData* location)
     {
-        return ManagedString().leakData();
+        init();
+        WeatherServiceWind w = weatherService.getWind(ManagedString(location));
+        return w.direction.leakData();
     }
 
     /**
@@ -89,11 +85,12 @@ namespace weather {
       */
     //% help=none
     //% weight=96
-    //% blockId=on_energy_event block="on energy usage of building %building|%LEVEL|%threshold" blockGap=8
-    //% LEVEL.fieldEditor="gridpicker" LEVEL.fieldOptions.columns=4
-    void onEnergy(StringData* building, EnergyLevel level, int threshold, Action body)
+    //% blockId=get_forecast_now block="get|weather forecast for %location" blockGap=8
+    StringData* getWeatherForecast(StringData* location)
     {
-        //
+        init();
+        WeatherServiceForecastNow w = weatherService.getForecastNow(ManagedString(location));
+        return w.text.leakData();
     }
 
     /**
@@ -101,43 +98,11 @@ namespace weather {
       */
     //% help=none
     //% weight=96
-    //% blockId=on_carbon_event block="on|carbon level %LEVEL" blockGap=8
-    //% LEVEL.fieldEditor="gridpicker" LEVEL.fieldOptions.columns=4
-    void onCarbon(CarbonLevel level, Action body)
+    //% blockId=get_forecast_tom block="get|tommorows' weather forecast for %location" blockGap=8
+    StringData* getWeatherForecastTomorrow(StringData* location)
     {
-        //
-    }
-
-    /**
-      * do some stuff
-      */
-    //% help=none
-    //% weight=96
-    //% blockId=on_any block="on %key|in room %room| changed" blockGap=8
-    void onAny(StringData* key, StringData* room, Action body)
-    {
-        //
-    }
-
-    /**
-      * do some stuff
-      */
-    //% help=none
-    //% weight=96
-    //% blockId=get_received_string block="received string" blockGap=8
-    StringData* getReceivedString()
-    {
-        return ManagedString().leakData();
-    }
-
-    /**
-      * do some stuff
-      */
-    //% help=none
-    //% weight=96
-    //% blockId=get_received_number block="received number" blockGap=8
-    int getReceivedNumber()
-    {
-        return 100;
+        init();
+        WeatherServiceForecastTomorrow w = weatherService.getForecastTomorrow(ManagedString(location));
+        return w.text.leakData();
     }
 }

@@ -10,8 +10,8 @@
     "_source": null,
     "color": "243",
     "weight": 100,
-    "icon": "",
-    "block": "IoT Blocks",
+    "icon": "",
+    "block": "Weather",
     "paramHelp": {},
     "jsDoc": "share\nuse"
    },
@@ -19,92 +19,6 @@
    "retType": "",
    "parameters": null,
    "qName": "weather"
-  },
-  "weather.setRoomTemperature": {
-   "kind": 3,
-   "namespace": "weather",
-   "name": "setRoomTemperature",
-   "attributes": {
-    "paramDefl": {},
-    "callingConvention": 0,
-    "_source": null,
-    "help": "none",
-    "weight": 96,
-    "blockId": "set_room_temp",
-    "block": "send|temperature %temperature|of room %room to remote",
-    "blockGap": "8",
-    "shim": "weather::setRoomTemperature",
-    "paramHelp": {},
-    "jsDoc": "do some stuff",
-    "_name": "setRoomTemperature"
-   },
-   "pkg": null,
-   "retType": "void",
-   "parameters": [
-    {
-     "name": "temperature",
-     "description": "",
-     "type": "number",
-     "options": {},
-     "isEnum": false
-    },
-    {
-     "name": "room",
-     "description": "",
-     "type": "string",
-     "options": {},
-     "isEnum": false
-    }
-   ],
-   "snippet": "setRoomTemperature(0, \"\")",
-   "qName": "weather.setRoomTemperature"
-  },
-  "weather.share": {
-   "kind": 3,
-   "namespace": "weather",
-   "name": "share",
-   "attributes": {
-    "paramDefl": {},
-    "callingConvention": 0,
-    "_source": null,
-    "help": "none",
-    "weight": 96,
-    "blockId": "share",
-    "block": "share|%variable|with %PERMISSIONS",
-    "blockGap": "8",
-    "paramFieldEditor": {
-     "PERMISSIONS": "gridpicker"
-    },
-    "paramFieldEditorOptions": {
-     "PERMISSIONS": {
-      "columns": "4"
-     }
-    },
-    "shim": "weather::share",
-    "paramHelp": {},
-    "jsDoc": "do some stuff",
-    "_name": "share"
-   },
-   "pkg": null,
-   "retType": "void",
-   "parameters": [
-    {
-     "name": "variable",
-     "description": "",
-     "type": "string",
-     "options": {},
-     "isEnum": false
-    },
-    {
-     "name": "l",
-     "description": "",
-     "type": "Locations",
-     "options": {},
-     "isEnum": true
-    }
-   ],
-   "snippet": "share(\"\", null)",
-   "qName": "weather.share"
   },
   "weather.getTemperature": {
    "kind": 3,
@@ -138,239 +52,101 @@
    "snippet": "getTemperature(\"\")",
    "qName": "weather.getTemperature"
   },
-  "weather.getEnergyUsage": {
+  "weather.getWindDirection": {
    "kind": 3,
    "namespace": "weather",
-   "name": "getEnergyUsage",
+   "name": "getWindDirection",
    "attributes": {
     "paramDefl": {},
     "callingConvention": 0,
     "_source": null,
     "help": "none",
     "weight": 96,
-    "blockId": "get_energy",
-    "block": "get|energy usage of building %building",
+    "blockId": "get_wind_dir",
+    "block": "get|wind direction for %location",
     "blockGap": "8",
-    "shim": "weather::getEnergyUsage",
+    "shim": "weather::getWindDirection",
     "paramHelp": {},
     "jsDoc": "do some stuff",
-    "_name": "getEnergyUsage"
+    "_name": "getWindDirection"
    },
    "pkg": null,
    "retType": "string",
    "parameters": [
     {
-     "name": "building",
+     "name": "location",
      "description": "",
      "type": "string",
      "options": {},
      "isEnum": false
     }
    ],
-   "snippet": "getEnergyUsage(\"\")",
-   "qName": "weather.getEnergyUsage"
+   "snippet": "getWindDirection(\"\")",
+   "qName": "weather.getWindDirection"
   },
-  "weather.onEnergy": {
+  "weather.getWeatherForecast": {
    "kind": 3,
    "namespace": "weather",
-   "name": "onEnergy",
+   "name": "getWeatherForecast",
    "attributes": {
     "paramDefl": {},
     "callingConvention": 0,
     "_source": null,
     "help": "none",
     "weight": 96,
-    "blockId": "on_energy_event",
-    "block": "on energy usage of building %building|%LEVEL|%threshold",
+    "blockId": "get_forecast_now",
+    "block": "get|weather forecast for %location",
     "blockGap": "8",
-    "paramFieldEditor": {
-     "LEVEL": "gridpicker"
-    },
-    "paramFieldEditorOptions": {
-     "LEVEL": {
-      "columns": "4"
-     }
-    },
-    "shim": "weather::onEnergy",
+    "shim": "weather::getWeatherForecast",
     "paramHelp": {},
     "jsDoc": "do some stuff",
-    "_name": "onEnergy"
-   },
-   "pkg": null,
-   "retType": "void",
-   "parameters": [
-    {
-     "name": "building",
-     "description": "",
-     "type": "string",
-     "options": {},
-     "isEnum": false
-    },
-    {
-     "name": "level",
-     "description": "",
-     "type": "EnergyLevel",
-     "options": {},
-     "isEnum": true
-    },
-    {
-     "name": "threshold",
-     "description": "",
-     "type": "number",
-     "options": {},
-     "isEnum": false
-    },
-    {
-     "name": "body",
-     "description": "",
-     "type": "() => void",
-     "options": {},
-     "isEnum": false
-    }
-   ],
-   "snippet": "onEnergy(\"\", null, 0, () => {})",
-   "qName": "weather.onEnergy"
-  },
-  "weather.onCarbon": {
-   "kind": 3,
-   "namespace": "weather",
-   "name": "onCarbon",
-   "attributes": {
-    "paramDefl": {},
-    "callingConvention": 0,
-    "_source": null,
-    "help": "none",
-    "weight": 96,
-    "blockId": "on_carbon_event",
-    "block": "on|carbon level %LEVEL",
-    "blockGap": "8",
-    "paramFieldEditor": {
-     "LEVEL": "gridpicker"
-    },
-    "paramFieldEditorOptions": {
-     "LEVEL": {
-      "columns": "4"
-     }
-    },
-    "shim": "weather::onCarbon",
-    "paramHelp": {},
-    "jsDoc": "do some stuff",
-    "_name": "onCarbon"
-   },
-   "pkg": null,
-   "retType": "void",
-   "parameters": [
-    {
-     "name": "level",
-     "description": "",
-     "type": "CarbonLevel",
-     "options": {},
-     "isEnum": true
-    },
-    {
-     "name": "body",
-     "description": "",
-     "type": "() => void",
-     "options": {},
-     "isEnum": false
-    }
-   ],
-   "snippet": "onCarbon(null, () => {})",
-   "qName": "weather.onCarbon"
-  },
-  "weather.onAny": {
-   "kind": 3,
-   "namespace": "weather",
-   "name": "onAny",
-   "attributes": {
-    "paramDefl": {},
-    "callingConvention": 0,
-    "_source": null,
-    "help": "none",
-    "weight": 96,
-    "blockId": "on_any",
-    "block": "on %key|in room %room| changed",
-    "blockGap": "8",
-    "shim": "weather::onAny",
-    "paramHelp": {},
-    "jsDoc": "do some stuff",
-    "_name": "onAny"
-   },
-   "pkg": null,
-   "retType": "void",
-   "parameters": [
-    {
-     "name": "key",
-     "description": "",
-     "type": "string",
-     "options": {},
-     "isEnum": false
-    },
-    {
-     "name": "room",
-     "description": "",
-     "type": "string",
-     "options": {},
-     "isEnum": false
-    },
-    {
-     "name": "body",
-     "description": "",
-     "type": "() => void",
-     "options": {},
-     "isEnum": false
-    }
-   ],
-   "snippet": "onAny(\"\", \"\", () => {})",
-   "qName": "weather.onAny"
-  },
-  "weather.getReceivedString": {
-   "kind": 3,
-   "namespace": "weather",
-   "name": "getReceivedString",
-   "attributes": {
-    "paramDefl": {},
-    "callingConvention": 0,
-    "_source": null,
-    "help": "none",
-    "weight": 96,
-    "blockId": "get_received_string",
-    "block": "received string",
-    "blockGap": "8",
-    "shim": "weather::getReceivedString",
-    "paramHelp": {},
-    "jsDoc": "do some stuff",
-    "_name": "getReceivedString"
+    "_name": "getWeatherForecast"
    },
    "pkg": null,
    "retType": "string",
-   "parameters": [],
-   "snippet": "getReceivedString()",
-   "qName": "weather.getReceivedString"
+   "parameters": [
+    {
+     "name": "location",
+     "description": "",
+     "type": "string",
+     "options": {},
+     "isEnum": false
+    }
+   ],
+   "snippet": "getWeatherForecast(\"\")",
+   "qName": "weather.getWeatherForecast"
   },
-  "weather.getReceivedNumber": {
+  "weather.getWeatherForecastTomorrow": {
    "kind": 3,
    "namespace": "weather",
-   "name": "getReceivedNumber",
+   "name": "getWeatherForecastTomorrow",
    "attributes": {
     "paramDefl": {},
     "callingConvention": 0,
     "_source": null,
     "help": "none",
     "weight": 96,
-    "blockId": "get_received_number",
-    "block": "received number",
+    "blockId": "get_forecast_tom",
+    "block": "get|tommorows' weather forecast for %location",
     "blockGap": "8",
-    "shim": "weather::getReceivedNumber",
+    "shim": "weather::getWeatherForecastTomorrow",
     "paramHelp": {},
     "jsDoc": "do some stuff",
-    "_name": "getReceivedNumber"
+    "_name": "getWeatherForecastTomorrow"
    },
    "pkg": null,
-   "retType": "number",
-   "parameters": [],
-   "snippet": "getReceivedNumber()",
-   "qName": "weather.getReceivedNumber"
+   "retType": "string",
+   "parameters": [
+    {
+     "name": "location",
+     "description": "",
+     "type": "string",
+     "options": {},
+     "isEnum": false
+    }
+   ],
+   "snippet": "getWeatherForecastTomorrow(\"\")",
+   "qName": "weather.getWeatherForecastTomorrow"
   },
   "EnergyLevel": {
    "kind": 6,
