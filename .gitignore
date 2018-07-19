@@ -1,3 +1,5 @@
 node_modules/
 _locales/
 pxt_modules
+build
+build/*
