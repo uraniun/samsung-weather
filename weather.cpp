@@ -7,6 +7,12 @@ WeatherService weatherService(uBit.radio);
  * use
  */
 
+enum class WeatherLocationType
+{
+    city,
+    postcode
+};
+
 //% color=243 weight=100 icon="\uf185" block="Weather"
 namespace weather {
 
@@ -15,34 +21,34 @@ namespace weather {
     }
 
     //%
-    StringData* getTemperature(StringData* location)
+    StringData* getTemperature(WeatherLocationType locationType, StringData* location)
     {
         init();
-        ManagedString s = weatherService.getTemperature(ManagedString(location));
+        ManagedString s = weatherService.getTemperature((int)locationType, ManagedString(location));
         return s.leakData();
     }
 
     //%
-    StringData* getWindDirection(StringData* location)
+    StringData* getWindDirection(WeatherLocationType locationType, StringData* location)
     {
         init();
-        WeatherServiceWind w = weatherService.getWind(ManagedString(location));
-        return w.direction.leakData();
+        ManagedString w = weatherService.getWind(int(locationType), ManagedString(location));
+        return w.leakData();
     }
 
     //%
-    StringData* getWeatherForecast(StringData* location)
+    StringData* getWeatherForecast(WeatherLocationType locationType, StringData* location)
     {
         init();
-        WeatherServiceForecastNow w = weatherService.getForecastNow(ManagedString(location));
-        return w.text.leakData();
+        ManagedString w = weatherService.getForecastNow(int(locationType), ManagedString(location));
+        return w.leakData();
     }
 
     //%
-    StringData* getWeatherForecastTomorrow(StringData* location)
+    StringData* getWeatherForecastTomorrow(WeatherLocationType locationType, StringData* location)
     {
         init();
-        WeatherServiceForecastTomorrow w = weatherService.getForecastTomorrow(ManagedString(location));
-        return w.text.leakData();
+        ManagedString w = weatherService.getForecastTomorrow(int(locationType), ManagedString(location));
+        return w.leakData();
     }
 }

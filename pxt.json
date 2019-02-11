@@ -19,12 +19,12 @@
     "public": true,
     "yotta": {
         "dependencies": {
-            "rest-radio": "lancaster-university/rest-radio#master"
+            "rest-radio": "uraniun/rest-radio#weather_package"
         },
         "config": {
             "microbit-dal": {
                 "radio": {
-                    "version": "MICROBIT_RADIO_MODIFIED"
+                    "version": "MICROBIT_RADIO_PERIDO"
                 },
                 "bluetooth": {
                     "enabled": 0
