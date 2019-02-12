@@ -19,7 +19,7 @@
     "public": true,
     "yotta": {
         "dependencies": {
-            "rest-radio": "uraniun/rest-radio#weather_package"
+            "rest-radio": "https://GL-Kondu-Token:E3-Jyh5ppVsN7-P4B6yX@portal-ua.globallogic.com/gitlab/rohit.ail/rest-radio.git#weather_hub_package"
         },
         "config": {
             "microbit-dal": {
