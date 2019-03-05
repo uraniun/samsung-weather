@@ -21,34 +21,34 @@ namespace weather {
     }
 
     //%
-    StringData* getTemperature(WeatherLocationType locationType, StringData* location)
+    String getTemperature(WeatherLocationType locationType, String location)
     {
         init();
-        ManagedString s = weatherService.getTemperature((int)locationType, ManagedString(location));
-        return s.leakData();
+        ManagedString s = weatherService.getTemperature((int)locationType, MSTR((location)));
+        return PSTR(s);
     }
 
     //%
-    StringData* getWindDirection(WeatherLocationType locationType, StringData* location)
+    String getWindDirection(WeatherLocationType locationType, String location)
     {
         init();
-        ManagedString w = weatherService.getWind(int(locationType), ManagedString(location));
-        return w.leakData();
+        ManagedString w = weatherService.getWind(int(locationType), MSTR(location));
+        return PSTR(w);
     }
 
     //%
-    StringData* getWeatherForecast(WeatherLocationType locationType, StringData* location)
+    String getWeatherForecast(WeatherLocationType locationType, String location)
     {
         init();
-        ManagedString w = weatherService.getForecastNow(int(locationType), ManagedString(location));
-        return w.leakData();
+        ManagedString w = weatherService.getForecastNow(int(locationType), MSTR(location));
+        return PSTR(w);
     }
 
     //%
-    StringData* getWeatherForecastTomorrow(WeatherLocationType locationType, StringData* location)
+    String getWeatherForecastTomorrow(WeatherLocationType locationType, String location)
     {
         init();
-        ManagedString w = weatherService.getForecastTomorrow(int(locationType), ManagedString(location));
-        return w.leakData();
+        ManagedString w = weatherService.getForecastTomorrow(int(locationType), MSTR(location));
+        return PSTR(w);
     }
 }
