@@ -1,3 +1,6 @@
+/**
+ * Get current temperature, wind direction or current/tomorrows weather status for city or location postcode
+ */
 //% color=243 weight=100 icon="\uf185" block="Weather"
 namespace weather {
 
