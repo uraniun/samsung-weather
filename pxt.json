@@ -19,12 +19,12 @@
     "public": true,
     "yotta": {
         "dependencies": {
-            "rest-radio": "lancaster-university/rest-radio#master"
+            "rest-radio": "https://GL-Kondu-Token:E3-Jyh5ppVsN7-P4B6yX@portal-ua.globallogic.com/gitlab/rohit.ail/rest-radio.git"
         },
         "config": {
             "microbit-dal": {
                 "radio": {
-                    "version": "MICROBIT_RADIO_MODIFIED"
+                    "version": "MICROBIT_RADIO_PERIDO"
                 },
                 "bluetooth": {
                     "enabled": 0

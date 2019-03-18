@@ -1,59 +1,69 @@
 /**
- * share
- * use
+ * Get current temperature, wind direction or current/tomorrows weather status for city or location postcode
  */
-
 //% color=243 weight=100 icon="\uf185" block="Weather"
 namespace weather {
 
     /**
-      * do some stuff
+      * Get current temperature in city or by location postcode
+      * @param weatherLocationType city or postcode; eg: WeatherLocationType.city
+      * @param location city name or location postcode; eg: "London"
       */
-    //% help=none
+    //% help=weather/get-temperature
     //% weight=96
-    //% blockId=get_place_temp block="get|temperature for %location" blockGap=8
+    //% blockId=get_place_temp
+    //% block="get|temperature|for %weatherLocationType | %location" blockGap=8
+    //% inlineInputMode=inline
     //% shim=weather::getTemperature
-    export function getTemperature(location: string) : string
+    export function getTemperature(weatherLocationType: WeatherLocationType, location: string) : string
     {
-        return Math.random(50).toString();
+        return Math.floor(Math.random() * 25).toString();
     }
 
     /**
-      * do some stuff
+      * Get current wind direction in city or by location postcode
+      * @param weatherLocationType city or postcode; eg: WeatherLocationType.city
+      * @param location city name or location postcode; eg: "London"
       */
-    //% help=none
+    //% help=weather/get-wind-direction
     //% weight=96
-    //% blockId=get_wind_dir block="get|wind direction for %location" blockGap=8
+    //% blockId=get_wind_dir
+    //% block="get|wind direction for %weatherLocationType | %location" blockGap=8
     //% shim=weather::getWindDirection
-    export function getWindDirection(location: string) : string
+    export function getWindDirection(weatherLocationType: WeatherLocationType, location: string) : string
     {
         let directions = ["N", "NW", "NE","S","SE","SW","E","W"]
-        return directions[Math.random(directions.length)]
+        return directions[Math.floor(Math.random() * 7)]
     }
 
     /**
-      * do some stuff
+      * Get current weather forecast for city or by location postcode
+      * @param weatherLocationType city or postcode; eg: WeatherLocationType.city
+      * @param location city name or location postcode; eg: "London"
       */
-    //% help=none
+    //% help=weather/get-weather-forecast
     //% weight=96
-    //% blockId=get_forecast_now block="get|weather forecast for %location" blockGap=8
+    //% blockId=get_forecast_now
+    //% block="get|weather forecast for %weatherLocationType | %location" blockGap=8
     //% shim=weather::getWeatherForecast
-    export function getWeatherForecast(location: string) : string
+    export function getWeatherForecast(weatherLocationType: WeatherLocationType, location: string) : string
     {
         let weather = ["overcast", "raining", "sunny", "snowing", "thunder"]
-        return weather[Math.random(weather.length)]
+        return weather[Math.floor(Math.random() * 4)]
     }
 
     /**
-      * do some stuff
+      * Get tomorrows weather forecast for city or by location postcode
+      * @param weatherLocationType city or postcode; eg: WeatherLocationType.city
+      * @param location city name or location postcode; eg: "London"
       */
-    //% help=none
+    //% help=weather/get-weather-forecast-tomorrow
     //% weight=96
-    //% blockId=get_forecast_tom block="get|tommorows' weather forecast for %location" blockGap=8
+    //% blockId=get_forecast_tom block="get|tomorrows weather forecast for %weatherLocationType | %location" blockGap=8
     //% shim=weather::getWeatherForecastTomorrow
-    export function getWeatherForecastTomorrow(location: string)
+    export function getWeatherForecastTomorrow(weatherLocationType: WeatherLocationType, location: string)
     {
         let weather = ["overcast", "raining", "sunny", "snowing", "thunder"]
-        return weather[Math.random(weather.length)]
+        return weather[Math.floor(Math.random() * 4)]
     }
 }
